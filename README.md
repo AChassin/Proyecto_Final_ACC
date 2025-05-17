@@ -56,7 +56,7 @@ for archivo in *ENP*.CSV; do
         }
     ' "$archivo" >> resumen.csv
 done
-
+```
 ---
 Una vez generado el archivo resumen.csv se utiizara el script graficar.py que generara gráficas de la Ciudad de México donde se ubiquen los puntos de mayor temperatura y precipitación.
 
