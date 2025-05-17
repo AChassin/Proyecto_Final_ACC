@@ -1,0 +1,34 @@
+#!/bin/bash
+
+echo "Estación,Longitud,Latitud,Tmax,Pmax,Date" > resumen.csv
+
+for archivo in *ENP*.CSV; do
+    # Obtener nombre de estación y fecha desde el nombre del archivo
+    base=$(basename "$archivo" .txt)
+    estacion=$(echo "$base" |  grep -o 'ENP[0-9]\+')
+    fecha=$(echo "$base" | cut -d'-' -f1-2)
+
+    # Extraer latitud y longitud desde la cabecera
+    lat_lon_line=$(grep "Lat" "$archivo")
+    lat=$(echo "$lat_lon_line" | sed -n 's/.*Lat \([0-9.]*\) N.*/\1/p')
+    lon=$(echo "$lat_lon_line" | sed -n 's/.*Lon \([0-9.]*\) W.*/\1/p')
+    # Asegurarse de que longitud sea negativa
+    lon="-${lon}"
+
+    awk -F',' -v estacion="$estacion" -v lat="$lat" -v lon="$lon" -v fecha="$fecha" '
+        BEGIN {
+            Tmax = -999; Pmax = -999;
+            datos = 0;
+        }
+        /Dosis_UV/ { datos = 1; next }
+        datos && NF >= 9 {
+            temp = $2 + 0
+            prec = $9 + 0
+            if (temp > Tmax) Tmax = temp
+            if (prec > Pmax) Pmax = prec
+        }
+        END {
+            printf "%s,%.6f,%.6f,%.1f,%.1f,%s\n", estacion, lon, lat, Tmax, Pmax, fecha
+        }
+    ' "$archivo" >> resumen.csv
+done
