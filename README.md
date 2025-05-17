@@ -9,11 +9,11 @@ Este repositorio contiene un script en Bash llamado `proyecto_final.sh`, el cual
 
 ---
 
-## 🔧 Script utilizado
+##  Script utilizado
 
 El script busca los archivos que contienen "ENP" en su nombre, extrae datos relevantes (coordenadas, temperatura, precipitación), calcula los valores máximos y los guarda en un archivo `resumen.csv`.
 
-### 📂 Nombre del script: `proyecto_final.sh`
+###  Nombre del script: `proyecto_final.sh`
 
 ```bash
 # Resumen del funcionamiento del script
@@ -56,7 +56,12 @@ for archivo in *ENP*.CSV; do
         }
     ' "$archivo" >> resumen.csv
 done
+
+---
 Una vez generado el archivo resumen.csv se utiizara el script graficar.py que generara gráficas de la Ciudad de México donde se ubiquen los puntos de mayor temperatura y precipitación.
+
+---
+
 ## Imágenes Resultantes
 
 A continuación se muestran las gráficas generadas para cada mes del año 2022:
