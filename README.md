@@ -250,15 +250,13 @@ done
 Al usarlo nos indica que Pantitlan ha sido la estación con mayor número de ingresos durante los años 2021, 2022, 2023, 2024.
 
 e) A partir de los resultados anteriores, ¿qué modificaciones deben realizarse para obtener el total de ingresos de todas las estaciones para todos los registros en el archivo, en otras palabras para todos los años registrados 2021 .. 2025?
-Se puede usar lo siguiente: 
+Respuesta: Se puede usar lo siguiente: 
 ```bash
-grep -E '^202[1-5]-' afluenciastc_desglosado_02_2025.csv > datos_filtrados.csv
-
-cut -d, -f5 datos_filtrados.csv | sort | uniq > estaciones
+cut -d, -f5 afluenciastc_desglosado_02_2025.csv | sort | uniq > estaciones
 
 cat estaciones | while read EST; do
   echo -n "$EST: "
-  grep "$EST" datos_filtrados.csv | cut -d, -f7 |
+  grep "$EST" afluenciastc_desglosado_02_2025.csv | cut -d, -f7 |
   awk '{ VAR += $1 } END { print VAR }'
 done
 
