@@ -184,3 +184,28 @@ A continuación se muestran las gráficas generadas para cada mes del año 2022:
 ![Precipitación máxima octubre](imagenes/prec_max_2022-10.png)  
 ![Precipitación máxima noviembre](imagenes/prec_max_2022-11.png)  
 ![Precipitación máxima diciembre](imagenes/prec_max_2022-12.png)  
+
+---
+## Actividad 3 
+Responder las siguientes preguntas a partir del siguiente script que son líneas utlizadas para obtener el total de ingresos para cada una de las
+estaciones de la Línea 1 del metro para la fecha 2021-01-01 a partir del archivoafluenciastc_desglosado_02_2025.csv.
+
+```bash
+grep 2021-01-01 afluenciastc_desglosado_02_2025.csv |
+grep -w "Línea 1" |
+cut -d, -f 5 |
+uniq > estaciones
+grep 2021-01-01 afluenciastc_desglosado_02_2025.csv |
+grep -w "Línea 1" > ingresos
+cat estaciones | while read EST; do
+echo -n "$EST: "
+grep "$EST" ingresos | cut -d, -f7 |
+awk '{ VAR += $1} ; END {print VAR}'
+done
+´´´
+a) ¿Qué resultado se obtiene al eliminar grep -w "Línea 1" de la secuencia de comandos? Explique.
+Respuesta: Se obtienen los resultados de todas las estaciones de todas las líneas, no solamente de la linea 1 de la fecha 2021-01-01.
+b) A partir del razonamiento anterior, ¿qué modificación debe realizarse para obtener el total de ingresos de todas las estaciones (todas las líneas del metro) para el mes de enero de 2021?
+c) A partir del resultado anterior, ¿qué modificaciones deben realizarse para obtener el total de ingresos de todas las estaciones (todas la líneas del metro) para el año 2021?
+d) Reportar la estación con más número de ingresos para los años 2021, 2022, 2023, 2024
+e) A partir de los resultados anteriores, ¿ qué modificaciones deben realizarse para obtener el total de ingresos de todas las estaciones para todos los registros en el archivo, en otras palabras para todos los años registrados 2021 .. 2025?
