@@ -206,6 +206,47 @@ done
 a) ¿Qué resultado se obtiene al eliminar grep -w "Línea 1" de la secuencia de comandos? Explique.
 Respuesta: Se obtienen los resultados de todas las estaciones de todas las líneas, no solamente de la linea 1 de la fecha 2021-01-01.
 b) A partir del razonamiento anterior, ¿qué modificación debe realizarse para obtener el total de ingresos de todas las estaciones (todas las líneas del metro) para el mes de enero de 2021?
+Respuesta:
+```bash
+grep 2021-01 afluenciastc_desglosado_02_2025.csv |
+cut -d, -f 5 |
+uniq > estaciones
+
+grep 2021-01 afluenciastc_desglosado_02_2025.csv > ingresos
+cat estaciones | while read EST; do
+echo -n "$EST: "
+
+grep "$EST" ingresos | cut -d, -f7 |
+awk '{ VAR += $1} ; END {print VAR}'
+done
+´´´
+Se eliminan los comandos grep -w "Línea 1"
+
 c) A partir del resultado anterior, ¿qué modificaciones deben realizarse para obtener el total de ingresos de todas las estaciones (todas la líneas del metro) para el año 2021?
-d) Reportar la estación con más número de ingresos para los años 2021, 2022, 2023, 2024
-e) A partir de los resultados anteriores, ¿ qué modificaciones deben realizarse para obtener el total de ingresos de todas las estaciones para todos los registros en el archivo, en otras palabras para todos los años registrados 2021 .. 2025?
+Respuesta: En este caso se utiliza solamente grep 2021:
+```bash
+grep 2021- afluenciastc_desglosado_02_2025.csv |
+cut -d, -f 5 |
+uniq > estaciones
+grep 2021- afluenciastc_desglosado_02_2025.csv > ingresos
+cat estaciones | while read EST; do
+echo -n "$EST: "
+grep "$EST" ingresos | cut -d, -f7 |
+awk '{ VAR += $1} ; END {print VAR}'
+done
+´´´
+
+d) Reportar la estación con más número de ingresos para los años 2021, 2022, 2023, 2024.
+Respuesta: Se puede usar el siguiente comando:
+```bash
+for año in {2021..2024}; do
+  grep "$año-" afluenciastc_desglosado_02_2025.csv |
+  cut -d, -f 5,7 |
+  awk -F, '{ ingresos[$1] += $2 } END { for (estacion in ingresos) print año, estacion, ingresos[estacion] }' año=$año |
+  sort -k3 -rn |
+  head -n1
+done
+´´´
+Al usarlo nos indica que Pantitlan ha sido la estación con mayor número de ingresos durante los años 2021, 2022, 2023, 2024.
+
+e) A partir de los resultados anteriores, ¿qué modificaciones deben realizarse para obtener el total de ingresos de todas las estaciones para todos los registros en el archivo, en otras palabras para todos los años registrados 2021 .. 2025?
