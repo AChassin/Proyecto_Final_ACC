@@ -1,4 +1,8 @@
-Este repositorio contiene un script en Bash llamado `proyecto_final.sh`, el cual procesa múltiples archivos `.CSV` con datos meteorológicos de estaciones meteorológicas ubicadas en los planteles de la Escuela Nacional Preparatoria. El objetivo es generar un archivo `resumen.csv` que contenga:
+Este repositorio contiene el proyecto final del curso de "Comandos GNU/Linux" conformado por tres actividades.
+
+##  Actividad 1 
+
+La actividad 1 consiste en la realización de un script en Bash llamado `proyecto_final.sh`, el cual procesa múltiples archivos `.CSV` con datos meteorológicos de estaciones meteorológicas ubicadas en los planteles de la Escuela Nacional Preparatoria. El objetivo es generar un archivo `resumen.csv` que contenga:
 
 - Nombre de la estación
 - Longitud
