@@ -147,7 +147,7 @@ if __name__ == "__main__":
     parser.add_argument("--variable", type=str, default="Tmax", help=" posibles valores Tmax ,Pmax")
     args = parser.parse_args()
     grafica(args.file,args.variable)
-´´´
+```
 
 ### Imágenes Resultantes
 
