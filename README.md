@@ -41,7 +41,7 @@ for archivo in *ENP*.CSV; do
     lon=$(echo "$lat_lon_line" | sed -n 's/.*Lon \([0-9.]*\) W.*/\1/p')
     # Asegurarse de que longitud sea negativa
     lon="-${lon}"
-
+    # Comparar valores e imprimir
     awk -F',' -v estacion="$estacion" -v lat="$lat" -v lon="$lon" -v fecha="$fecha" '
         BEGIN {
             Tmax = -999; Pmax = -999;
