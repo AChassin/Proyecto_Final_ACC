@@ -63,7 +63,7 @@ done
 ---
 
 ## Actividad 2
-La actividad 2 consiste en generar gráficas de la Ciudad de México donde se ubiquen los puntos de mayor temperatura y precipitación utizando el script `graficar.py` a partir del archivo `resumen.csv`.
+La actividad 2 consiste en generar gráficas de la Ciudad de México donde se ubiquen los puntos de mayor temperatura y precipitación utizando el script `graficar.py` a partir del archivo `resumen.csv`. Para ejecutar el código se usa el comando python graficar.py --file resumen.csv --variable Tmax y graficar.py --file resumen.csv --variable Pmax.
 
 ### Script de Python utlizado
 ``` python
@@ -188,7 +188,7 @@ A continuación se muestran las gráficas generadas para cada mes del año 2022:
 ---
 ## Actividad 3 
 Responder las siguientes preguntas a partir del siguiente script que son líneas utlizadas para obtener el total de ingresos para cada una de las
-estaciones de la Línea 1 del metro para la fecha 2021-01-01 a partir del `archivoafluenciastc_desglosado_02_2025.csv`.
+estaciones de la Línea 1 del metro para la fecha 2021-01-01 a partir del archivo `afluenciastc_desglosado_02_2025.csv`.
 
 ```bash
 grep 2021-01-01 afluenciastc_desglosado_02_2025.csv |
