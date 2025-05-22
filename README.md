@@ -188,7 +188,7 @@ A continuación se muestran las gráficas generadas para cada mes del año 2022:
 ---
 ## Actividad 3 
 Responder las siguientes preguntas a partir del siguiente script que son líneas utlizadas para obtener el total de ingresos para cada una de las
-estaciones de la Línea 1 del metro para la fecha 2021-01-01 a partir del archivoafluenciastc_desglosado_02_2025.csv.
+estaciones de la Línea 1 del metro para la fecha 2021-01-01 a partir del `archivoafluenciastc_desglosado_02_2025.csv`.
 
 ```bash
 grep 2021-01-01 afluenciastc_desglosado_02_2025.csv |
