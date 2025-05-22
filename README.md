@@ -14,7 +14,7 @@ La actividad 1 consiste en la realización de un script en Bash llamado `proyect
 
 ###  Script de bash utilizado
 
-El script busca los archivos que contienen "ENP" en su nombre, extrae datos relevantes (coordenadas, temperatura, precipitación), calcula los valores máximos y los guarda en un archivo `resumen.csv`.
+El script busca los archivos que contienen "ENP" en su nombre, extrae datos relevantes (coordenadas, temperatura, precipitación), calcula los valores máximos y los guarda en un archivo `resumen.csv´.
 
 ###  Nombre del script: `proyecto_final.sh`
 
