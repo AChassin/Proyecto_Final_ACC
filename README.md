@@ -63,7 +63,7 @@ done
 ---
 
 ## Actividad 2
-La actividad 2 consiste en generar gráficas de la Ciudad de México donde se ubiquen los puntos de mayor temperatura y precipitación utizando el script graficar.py a partir del archivo resumen.csv.
+La actividad 2 consiste en generar gráficas de la Ciudad de México donde se ubiquen los puntos de mayor temperatura y precipitación utizando el script `graficar.py´ a partir del archivo `resumen.csv.´
 
 ### Script de Python utlizado
 ``` python
